@@ -87,7 +87,89 @@ The code has been tested on the following environments:
    This is very similar to the naming conventions of the [released OSimUnr dataset.](https://github.com/gokhanercan/OSimUnr)
 
 **Output:**
-todo:output here..
+```bash
+C:\Users\gokhan\AppData\Local\Programs\Python\Python36\python.exe L:\Projects\OSimUnr-Generator\src\Run.py 
+20:43:10: Building common context for the study...
+20:43:10: Common context executed!
+<src.Core.OSimUnrPipeline.EnglishPipeline.EnglishPipeline object at 0x00000149A9C66F60>
+20:43:10: Resources root: L:\Projects\OSimUnr-Generator\Resources
+20:43:10: Starting dataset generation..
+Debugger is not attached. _Debug=False
+20:43:15: Starting Stage2...
+20:43:15: oSimAlg: nedit
+20:43:15: iter-a: 12/125000 (0.01%)
+20:43:15: Remaining: 0:00:03.251675
+...
+..
+20:43:19: iter-w: 124740/125000 (99.79%)
+20:43:19: Remaining: 0:00:00.009201
+totalSpace: 124750
+20:43:19: Saving dataset or dataset snapshot named: S2-OrthographicallySimilarsQ3-nedit ...
+20:43:19: Saved snapshot: L:\Projects\OSimUnr-Generator\Resources\Studies\MyStudy\eng\S2-OrthographicallySimilarsQ3-nedit-ZTXQX.csv(411)
+20:43:19: Saving dataset or dataset snapshot named: S2-OrthographicallySimilarsQ4-nedit ...
+20:43:19: Saved snapshot: L:\Projects\OSimUnr-Generator\Resources\Studies\MyStudy\eng\S2-OrthographicallySimilarsQ4-nedit-ZTXQX.csv(2)
+20:43:19: S3: Starting Stage3 Relatedness Filtering...
+20:43:19: WordNetSim Type: <src.Core.WordNet.NLTKWordNetWrapper.NLTKWordNetWrapper object at 0x00000149AEEE0630>
+20:43:19: S3: Calculating WordNet relatedness values for WordPairs...
+20:43:19: S3: Loading
+20:43:19: Loading wordpair dataset into memory...L:\Projects\OSimUnr-Generator\Resources\Studies\MyStudy\eng\S2-OrthographicallySimilarsQ4-nedit-ZTXQX.csv
+20:43:19: Loaded wordpairs from path: L:\Projects\OSimUnr-Generator\Resources\Studies\MyStudy\eng\S2-OrthographicallySimilarsQ4-nedit-ZTXQX.csv (2 items)
+20:43:19: Loading wordpair dataset into memory...L:\Projects\OSimUnr-Generator\Resources\Studies\MyStudy\eng\S2-OrthographicallySimilarsQ3-nedit-ZTXQX.csv
+20:43:19: Loaded wordpairs from path: L:\Projects\OSimUnr-Generator\Resources\Studies\MyStudy\eng\S2-OrthographicallySimilarsQ3-nedit-ZTXQX.csv (411 items)
+20:43:19: Setting WordNet similarities for L:\Projects\OSimUnr-Generator\Resources\Studies\MyStudy\eng\S2-OrthographicallySimilarsQ4-nedit-ZTXQX.csv ...
+20:43:19: WordSimilarityNormalizerWrapper.Eagerly normalizing 2 wordpairs ...
+20:43:19: wordpair: 0/2 (0.0%)
+
+20:43:25: WordSimilarityNormalizerWrapperNormalization completed!
+20:43:25: Saving dataset or dataset snapshot named: S3-OrthographicallySimilarsWithWNQ4-nedit ...
+20:43:25: Saved snapshot: L:\Projects\OSimUnr-Generator\Resources\Studies\MyStudy\eng\S3-OrthographicallySimilarsWithWNQ4-nedit-ZTXQX.csv(2)
+20:43:25: Setting WordNet similarities for L:\Projects\OSimUnr-Generator\Resources\Studies\MyStudy\eng\S2-OrthographicallySimilarsQ3-nedit-ZTXQX.csv ...
+20:43:25: WordSimilarityNormalizerWrapper.Eagerly normalizing 411 wordpairs ...
+20:43:25: wordpair: 0/411 (0.0%)
+20:43:25: wordpair: 4/411 (0.97%)
+...
+..
+20:43:25: wordpair: 408/411 (99.27%)
+20:43:25: Remaining: 0:00:00.000803
+20:43:25: WordSimilarityNormalizerWrapperNormalization completed!
+20:43:25: Saving dataset or dataset snapshot named: S3-OrthographicallySimilarsWithWNQ3-nedit ...
+20:43:25: Saved snapshot: L:\Projects\OSimUnr-Generator\Resources\Studies\MyStudy\eng\S3-OrthographicallySimilarsWithWNQ3-nedit-ZTXQX.csv(411)
+20:43:25: Loading wordpair dataset into memory...L:\Projects\OSimUnr-Generator\Resources\Studies\MyStudy\eng\S3-OrthographicallySimilarsWithWNQ3-nedit-ZTXQX.csv
+20:43:25: Loaded wordpairs from path: L:\Projects\OSimUnr-Generator\Resources\Studies\MyStudy\eng\S3-OrthographicallySimilarsWithWNQ3-nedit-ZTXQX.csv (411 items)
+20:43:25: Initializing root detection dependencies...
+20:43:25: Loading metadatas too...
+20:43:25: Dataset loaded from flat text(s).
+20:43:25: Loading metadatas too...
+20:43:25: Dataset loaded from flat text(s).
+20:43:25: Initializing definition-based filtering dependencies...
+20:43:25: detectUnrelateds...
+20:43:25: S3a Relatedness Filtering is about to begin for L:\Projects\OSimUnr-Generator\Resources\Studies\MyStudy\eng\S3-OrthographicallySimilarsWithWNQ4-nedit-ZTXQX.csv ...
+20:43:25: wp: 0/2 (0.0%)
+20:43:25: Saving dataset or dataset snapshot named: S3a-OrthographicallySimilarAndSharingRootsQ4-nedit ...
+20:43:25: Saved snapshot: L:\Projects\OSimUnr-Generator\Resources\Studies\MyStudy\eng\S3a-OrthographicallySimilarAndSharingRootsQ4-nedit-ZTXQX.csv(2)
+20:43:25: Relatedness filtering ended.
+20:43:25: detectUnrelateds...
+20:43:25: S3a Relatedness Filtering is about to begin for L:\Projects\OSimUnr-Generator\Resources\Studies\MyStudy\eng\S3-OrthographicallySimilarsWithWNQ3-nedit-ZTXQX.csv ...
+20:43:25: wp: 0/411 (0.0%)
+20:43:25: wp: 4/411 (0.97%)
+20:43:25: Remaining: 0:00:00.006840
+20:43:25: wp: 8/411 (1.95%)
+...
+..
+20:43:25: Remaining: 0:00:00.000055
+20:43:25: wp: 408/411 (99.27%)
+20:43:25: Remaining: 0:00:00.000023
+20:43:25: Saving dataset or dataset snapshot named: S3a-OrthographicallySimilarButUnrelatedsQ3-nedit ...
+20:43:25: Saved snapshot: L:\Projects\OSimUnr-Generator\Resources\Studies\MyStudy\eng\S3a-OrthographicallySimilarButUnrelatedsQ3-nedit-ZTXQX.csv(8)
+20:43:25: Saving dataset or dataset snapshot named: S3a-OrthographicallySimilarAndSharingRootsQ3-nedit ...
+20:43:25: Saved snapshot: L:\Projects\OSimUnr-Generator\Resources\Studies\MyStudy\eng\S3a-OrthographicallySimilarAndSharingRootsQ3-nedit-ZTXQX.csv(403)
+20:43:25: Relatedness filtering ended.
+20:43:25: MyStudy S3a process completed.
+20:43:25: Process completed for MyStudy
+20:43:25: Dataset generation completed.
+
+Process finished with exit code 0
+```
 
 ## CUSTOMIZATION
 
