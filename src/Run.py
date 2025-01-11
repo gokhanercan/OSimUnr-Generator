@@ -4,7 +4,6 @@ import sys
 from src.Core import Generator
 from src.Core.Generator import GenerateDataset, SetContext
 
-
 from src.Core.Languages.LinguisticContext import LinguisticContext
 from src.Core.Morphology.POSTypes import POSTypes
 from src.Core.OSimUnrPipeline.EnglishPipeline import EnglishPipeline
@@ -35,17 +34,3 @@ if __name__ == '__main__':
     logp("Dataset generation completed.",True)
 
     #QueryLanguages()
-
-# with 3.6
-    # $env:PYTHONPATH = "L:\Projects\OSimUnr-Generator"
-    # C:/Users/gokhan/AppData/Local/Programs/Python/Python36/python.exe -m pip install pandas (pip kurulum için)
-    # C:/Users/gokhan/AppData/Local/Programs/Python/Python36/python.exe src\Run.py
-    # C:/Users/gokhan/AppData/Local/Programs/Python/Python36/python.exe test\UnitTestsRunner.py
-
-# with TEST2 (conda activate'ten sonra path'e gerek yok.)
-    # conda activate TEST2
-    # $env:PYTHONPATH = "L:\TEST"
-    # pip install pip-tools
-    # pip install -r requirements.txt
-    # python src\Run.py
-    # python test\UnitTestsRunner.py
