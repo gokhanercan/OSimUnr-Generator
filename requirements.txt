@@ -1,0 +1,5 @@
+nltk==3.4.5
+pandas>=1.1.5
+tabulate==0.8.10
+unicode_tr==0.6.1
+dataclasses
