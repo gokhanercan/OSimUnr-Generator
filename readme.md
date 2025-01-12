@@ -199,7 +199,7 @@ Please use parameters *resume*, *resumeStage3and4*, *wordpoolPath*, *wordpairsPa
 
 ### Change Providers and Settings
 
-The `Generator.py` implementation utilizes an abstract provider model called `PipelineProviderBase` to create concrete resources, data entries, and implementations.
+The `Generator.py` implementation utilizes an abstract provider model called [`PipelineProviderBase`](/src/Core/OSimUnrPipeline/PipelineProviderBase.py) to create concrete resources, data entries, and implementations.
 The default provider is set as `EnglishPipelineProvider`, configured as follows:
 ```python
 englishPipeline: PipelineProviderBase = EnglishPipeline(LinguisticContext.BuildEnglishContext(), EditDistance())
