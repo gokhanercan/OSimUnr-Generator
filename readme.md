@@ -1,6 +1,6 @@
 # OSimUnr-Generator
 ## INTRODUCTION
-This repository provides tools used to automatically generate new instances of **OSimUnr dataset** ([see the paper of the study](#cite)), which contains *orthographically similar but semantically unrelated* (OSimUnr) word-pairs.
+This repository provides tools used to automatically generate new instances of **[OSimUnr dataset](https://github.com/gokhanercan/OSimUnr)** ([see the paper of the study](#cite)), which contains *orthographically similar but semantically unrelated* (OSimUnr) word-pairs.
 
 Here are some word-pair examples from the [dataset repository](https://github.com/gokhanercan/OSimUnr):
 
@@ -56,7 +56,7 @@ The code has been tested on the following environments:
    ```bash
    pip install -r requirements.txt
    ```
-3. Run the `setup.py` script to download WordNet data in your local:
+3. Run the [`setup.py`](setup.py) script to download WordNet data in your local:
 
    ```bash
    python setup.py
@@ -177,14 +177,14 @@ You can customize and extend the pipeline based on your needs as follows:
 
 ### Set the Initial Parameters and Algorithms
 
-In the `Run.py` file, you can set various parameters:
+In the [`Run.py`](src/Run.py) file, you can set various parameters:
 
 ```python
 GenerateDataset(wordPosFilters=[POSTypes.NOUN],minOrthographicSimQ3=0.50, minOrthographicSimQ4=0.75,maxRelatedness=0.25,limitWordCands=500)
 ```
 
 ### Parameters
-> **wordPosFilters**: Defines the part-of-speech (POS) tags that the word-pool should use. Default is [POSTypes.NOUN].
+> **wordPosFilters**: Defines the part-of-speech (POS) tags that the word-pool should use. Default is [POSTypes.NOUN](src/Core/Morphology/POSTypes.py).
 
 > **minOrthographicSimQ3**: Defines the lower limit of the Q3 orthographic space. The upper limit is *minOrthographicSimQ4*. Default is 0.50.
 
@@ -192,20 +192,20 @@ GenerateDataset(wordPosFilters=[POSTypes.NOUN],minOrthographicSimQ3=0.50, minOrt
 
 > **maxRelatedness**: Sets the threshold that defines the maximum level of 'unrelatedness' of word pairs on a scale of 0 to 1. Default is 0.25.
 
-> **limitWordCands**: The size of the word-pool you want to use. If set, it limits the word-pool by randomly picking words form the `IWordSource`. Default is None.
+> **limitWordCands**: The size of the word-pool you want to use. If set, it limits the word-pool by randomly picking words form the [`IWordSource`](src/Core/IWordSource.py). Default is None.
 
 Please use parameters *resume*, *resumeStage3and4*, *wordpoolPath*, *wordpairsPath*, *s1Only* if you want to use the Save/Restore/Resume stages of the pipeline functionality. It is very useful for very long-running generations that take days.
 
 
 ### Change Providers and Settings
 
-The `Generator.py` implementation utilizes an abstract provider model called [`PipelineProviderBase`](/src/Core/OSimUnrPipeline/PipelineProviderBase.py) to create concrete resources, data entries, and implementations.
-The default provider is set as `EnglishPipelineProvider`, configured as follows:
+The [`Generator.py`](src/Core/Generator.py) implementation utilizes an abstract provider model called [`PipelineProviderBase`](/src/Core/OSimUnrPipeline/PipelineProviderBase.py) to create concrete resources, data entries, and implementations.
+The default provider is set as [`EnglishPipelineProvider`](/src/Core/OSimUnrPipeline/EnglishPipeline.py), configured as follows:
 ```python
 englishPipeline: PipelineProviderBase = EnglishPipeline(LinguisticContext.BuildEnglishContext(), EditDistance())
 ```
 
-If you wish to modify the orthographic similarity, for instance, please provide any Python implementation of `IWordSimilarity` and inject it into the provider.
+If you wish to modify the orthographic similarity, for instance, please provide any Python implementation of [`IWordSimilarity`](src/Core/WordSim/IWordSimilarity.py) and inject it into the provider.
 Below is a list of factory methods expected from a concrete provider, organized into three groups:
 
 **A. Morphological Resources**
@@ -231,7 +231,7 @@ Below is a list of factory methods expected from a concrete provider, organized 
 > CreateDerivationallyRelatedClassifier()
 ```
 
-If you check out `EnglishPipeline.py`, you'll see a list of manual definitions and mappings introduced to reduce the false positive rates in the final dataset. 
+If you check out [`EnglishPipeline.py`](src/Core/OSimUnrPipeline/EnglishPipeline.py), you'll see a list of manual definitions and mappings introduced to reduce the false positive rates in the final dataset. 
 
 As an example, here is the list of blacklisted concepts (synset names) from English WordNet used in `CreateBlacklistedConceptsFilterer`:
 
@@ -254,7 +254,7 @@ As an example, here is the list of blacklisted concepts (synset names) from Engl
 
 
 ### Adding a New Language
-To add a new language, along with the morphological and semantic provider types required for your language, you need to modify the `LinguisticContext` type specifically for your language code. If the grammar (`IGrammar`) of the language is generic enough, considering aspects such as the alphabet, casing, and accents, you may reuse the `InvariantGrammar` instance. However, if the language has distinct characteristics, please refer to our Turkish implementation (`TRGrammar`) as a model.
+To add a new language, along with the morphological and semantic provider types required for your language, you need to modify the [`LinguisticContext`](src/Core/Languages/LinguisticContext.py) type specifically for your language code. If the grammar ([`IGrammar`](src/Core/Languages/Grammars/IGrammar.py)) of the language is generic enough, considering aspects such as the alphabet, casing, and accents, you may reuse the [`InvariantGrammar`](src/Core/Languages/Grammars/InvariantGrammar.py) instance. However, if the language has distinct characteristics, please refer to our Turkish implementation [`TRGrammar`](src/Core/Languages/Grammars/TRGrammar.py) as a model.
 
 Below is the list of languages supported by WordNet version 3.4.5, which includes 29 languages:
 ```bash
@@ -267,13 +267,13 @@ You can retrieve this list by running the following code:
 from src.Core.WordNet.NLTKWordNetWrapper import QueryLanguages
 QueryLanguages()
 ```
-Note that Turkish is not included in this list. For generating OSimUnr, we utilized our study group's open-source [Java WordNet library](https://github.com/olcaytaner/TurkishWordNet), which adheres to the same IWordNet and IWordNetMeasure interfaces
+Note that Turkish is not included in this list. For generating [OSimUnr](https://github.com/gokhanercan/OSimUnr), we utilized our study group's open-source [Java WordNet library](https://github.com/olcaytaner/TurkishWordNet), which adheres to the same [`IWordNet`](src/Core/WordNet/IWordNet.py) and `IWordNetMeasure` interfaces.
 
 ## DEPENDENCIES
-This project relies on minimal dependencies (see `requirements.txt` for details). The main dependencies are:
+This project relies on minimal dependencies (see [`requirements.txt`](src/Core/requirements.txt) for details). The main dependencies are:
 
 - **NLTK**: Ensure version 3.4.5 is used. This study heavily relies on NLTK's WordNet and other resources. Changing the NLTK version may cause some semantic or morphological assumption and tests to break.
-- **Pandas**: Ensure the compatible version is installed (fixed in `requirements.txt`).
+- **Pandas**: Ensure the compatible version is installed (fixed in [`requirements.txt`](src/Core/requirements.txt)).
 
 ### Notes
 
