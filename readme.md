@@ -231,9 +231,9 @@ Below is a list of factory methods expected from a concrete provider, organized 
 > CreateDerivationallyRelatedClassifier()
 ```
 
-If you check out `EnglishPipeline.py`, you'll see a list of manual definitions and mappings introduced to reduce the false positive rates in the final dataset. As an example, here is the list of blacklisted concepts from English WordNet used in `CreateBlacklistedConceptsFilterer`:
+If you check out `EnglishPipeline.py`, you'll see a list of manual definitions and mappings introduced to reduce the false positive rates in the final dataset. 
 
-The concept list (synset names) is ordered from general to specific:
+As an example, here is the list of blacklisted concepts (synset names) from English WordNet used in `CreateBlacklistedConceptsFilterer`:
 
 ```bash
 - ill_health.n.01
