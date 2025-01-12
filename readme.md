@@ -184,7 +184,7 @@ GenerateDataset(wordPosFilters=[POSTypes.NOUN],minOrthographicSimQ3=0.50, minOrt
 ```
 
 ### Parameters
-> **wordPosFilters**: Defines the part-of-speech (POS) tags that the word-pool should use. Default is [POSTypes.NOUN](src/Core/Morphology/POSTypes.py).
+> **wordPosFilters**: Defines the part-of-speech (POS) tags that the word-pool should use. Default is [POSTypes.NOUN](/src/Core/Morphology/POSTypes.py).
 
 > **minOrthographicSimQ3**: Defines the lower limit of the Q3 orthographic space. The upper limit is *minOrthographicSimQ4*. Default is 0.50.
 
@@ -192,7 +192,7 @@ GenerateDataset(wordPosFilters=[POSTypes.NOUN],minOrthographicSimQ3=0.50, minOrt
 
 > **maxRelatedness**: Sets the threshold that defines the maximum level of 'unrelatedness' of word pairs on a scale of 0 to 1. Default is 0.25.
 
-> **limitWordCands**: The size of the word-pool you want to use. If set, it limits the word-pool by randomly picking words form the [`IWordSource`](src/Core/IWordSource.py). Default is None.
+> **limitWordCands**: Limits the size of the word-pool. If set, it limits the word-pool by randomly picking words form the [`IWordSource`](src/Core/IWordSource.py). Default is None. This is useful for local pre-experimentation. Keep in mind that word pairing is quadratic, and dataset generation may take weeks to complete.
 
 Please use parameters *resume*, *resumeStage3and4*, *wordpoolPath*, *wordpairsPath*, *s1Only* if you want to use the Save/Restore/Resume stages of the pipeline functionality. It is very useful for very long-running generations that take days.
 
@@ -205,7 +205,7 @@ The default provider is set as [`EnglishPipelineProvider`](/src/Core/OSimUnrPipe
 englishPipeline: PipelineProviderBase = EnglishPipeline(LinguisticContext.BuildEnglishContext(), EditDistance())
 ```
 
-If you wish to modify the orthographic similarity, for instance, please provide any Python implementation of [`IWordSimilarity`](src/Core/WordSim/IWordSimilarity.py) and inject it into the provider.
+If you wish to modify the orthographic similarity, for instance, please provide any Python implementation of [`IWordSimilarity`](/src/Core/WordSim/IWordSimilarity.py) and inject it into the provider.
 Below is a list of factory methods expected from a concrete provider, organized into three groups:
 
 **A. Morphological Resources**
@@ -231,7 +231,7 @@ Below is a list of factory methods expected from a concrete provider, organized 
 > CreateDerivationallyRelatedClassifier()
 ```
 
-If you check out [`EnglishPipeline.py`](src/Core/OSimUnrPipeline/EnglishPipeline.py), you'll see a list of manual definitions and mappings introduced to reduce the false positive rates in the final dataset. 
+If you check out [`EnglishPipeline.py`](/src/Core/OSimUnrPipeline/EnglishPipeline.py), you'll see a list of manual definitions and mappings introduced to reduce the false positive rates in the final dataset. 
 
 As an example, here is the list of blacklisted concepts (synset names) from English WordNet used in `CreateBlacklistedConceptsFilterer`:
 
