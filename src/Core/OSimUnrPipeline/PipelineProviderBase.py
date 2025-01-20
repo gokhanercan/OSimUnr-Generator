@@ -6,6 +6,7 @@ from src.Core.Languages.LinguisticContext import LinguisticContext
 from src.Core.Morphology.POSTypes import POSTypes
 from src.Core.Morphology.RootDetection.IRootDetector import IRootDetector
 from src.Core.Orthographic.NormalizedStringSimilarity.EditDistance import EditDistance
+from src.Core.Segmentation.Tokenizers.ITokenizer import ITokenizer
 from src.Core.Task.IWordRelatednessBinaryClassifier import IWordRelatednessBinaryClassifier
 from src.Core.WordNet.Classifiers.BlacklistedConceptsWordNetRelatednessFilterer import \
     BlacklistedConceptsWordNetRelatednessFilterer
@@ -23,11 +24,11 @@ class PipelineProviderBase(ABC):
         self._WordSource: IWordSource = None
 
     @abstractmethod
-    def CreateWordNet(self):
+    def CreateWordNet(self)->IWordNet:
         pass
 
     @abstractmethod
-    def CreateWordSource(self):
+    def CreateWordSource(self) -> IWordSource:
         pass
 
     @abstractmethod
@@ -39,7 +40,7 @@ class PipelineProviderBase(ABC):
         pass
 
     @abstractmethod
-    def CreateTokenizer(self):
+    def CreateTokenizer(self) -> ITokenizer:
         pass
 
     #region Filterings
