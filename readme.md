@@ -212,7 +212,6 @@ Below is a list of factory methods expected from a concrete provider, organized 
 ```python
 > CreateRootDetector()
 > CreateFastRootDetector()
-> CreateMorphoLex()
 > CreateTokenizer()
 ```
 
