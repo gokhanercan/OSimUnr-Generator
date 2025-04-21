@@ -1,4 +1,5 @@
 # coding=utf-8
+import pprint
 import unittest
 import warnings
 from builtins import NotImplementedError
@@ -690,15 +691,23 @@ def QueryLanguages():
     languages = wn.langs()
     print("Languages supported by WordNet:")
     print(languages)
+    print(f"Total languages: {len(languages)}")
 
     # Check for a specific language WordNet
-    language_code = 'fra'  # Example for French
-    print(f"\nChecking if WordNet exists for '{language_code}':")
-    if language_code in languages:
-        print(f"Yes, {language_code} is supported.")
-    else:
-        print(f"No, {language_code} is not supported.")
+    # language_code = 'fra'  # Example for French
+    # print(f"\nChecking if WordNet exists for '{language_code}':")
+    stats = {}
+    for lang in languages:
+        lemmas = wn.all_lemma_names(lang=lang, pos=None)
+        words:set = set()
+        for lemma in lemmas:
+            words.add(lemma)
+        # print(f"{lang}\t{len(words)}")
+        stats[lang] = len(words)
 
+    stats_sorted = dict(sorted(stats.items(), key=lambda item: item[1],reverse=True))
+    print(stats_sorted)
+    # pprint.pprint(stats_sorted)
 
 if __name__ == "__main__":
     QueryLanguages()
@@ -708,13 +717,17 @@ if __name__ == "__main__":
     # exit()
 
     # Antonym check
-    from nltk.corpus import wordnet as wn
+    from nltk.corpus import wordnet as wn, words
 
-    good_lemma = wn.lemma('good.a.01.good')
-    print(good_lemma.antonyms())
+    # good_lemma = wn.lemma('good.a.01.good')
+    # print(good_lemma.antonyms())
 
-    goods = wn.synsets('good')
+    goods = wn.synsets('porte', lang="fra")
+    print(goods)
+
     good = wn.synset('good.a.01')
+    print(good.lemma_names("fra"))
+
     print(good.definition())
     print(good.antonyms())
     exit()

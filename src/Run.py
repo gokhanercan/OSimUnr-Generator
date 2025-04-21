@@ -27,10 +27,10 @@ if __name__ == '__main__':
     logp(f"Resources root: {Resources.GetResourcesRoot()}", True)
     logp("Starting dataset generation..",True)
 
-    GenerateDataset(wordPosFilters=[POSTypes.NOUN],
-                    minOrthographicSimQ3=0.50, minOrthographicSimQ4=0.75,
-                    limitWordCands=500, maxRelatedness=0.25
-                    )
-    logp("Dataset generation completed.",True)
+    # GenerateDataset(wordPosFilters=[POSTypes.NOUN],
+    #                 minOrthographicSimQ3=0.50, minOrthographicSimQ4=0.75,
+    #                 limitWordCands=500, maxRelatedness=0.25
+    #                 )
+    # logp("Dataset generation completed.",True)
 
-    #QueryLanguages()
+    QueryLanguages()
