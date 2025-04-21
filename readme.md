@@ -301,4 +301,17 @@ Before submitting a pull request, please ensure that all tests have been run and
 
 ### Cite
 
-The paper for this work is currently under peer review. Citation details will be provided here once available.
+If you use these resources on your research, please cite the following paper:
+
+Grammar or Crammer? The Role of Morphology on Distinguishing Orthographically Similar but Semantically Unrelated Words
+[(Details)](http://www.gokhanercan.com/publications.aspx?paper=osimunr)
+
+```bib
+@article{ercan2025grammar,
+  title={Grammar or Crammer? The Role of Morphology in Distinguishing Orthographically Similar but Semantically Unrelated Words},
+  author={Ercan, G{\"o}khan and Yıldız, Olcay Taner},
+  journal={IEEE Access},
+  year={2025},
+  publisher={IEEE}
+}
+```
